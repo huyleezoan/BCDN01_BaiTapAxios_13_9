@@ -48,11 +48,9 @@ function checkValidation(
     isValid &=
         checkValEmpty(matKhau, 'tbMatKhau') &&
         validation.checkPass(matKhau, 'tbMatKhau', 'Mật khẩu' + textDinhDang);
-    // check chức vụ
     isValid &= checkDrop('loaiNguoiDung', 'tbNguoiDung');
     isValid &= checkDrop('loaiNgonNgu', 'tbNgonNgu');
-    isValid &=
-        checkValEmpty(moTa, 'tbMoTa');
+    isValid &= checkValEmpty(moTa, 'tbMoTa') && validation.checkMoTa(moTa, "tbMoTa", "Mô tả" + textDinhDang);
     return isValid;
 }
 

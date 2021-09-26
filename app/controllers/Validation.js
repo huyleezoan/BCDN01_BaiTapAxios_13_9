@@ -80,5 +80,20 @@ function Validation() {
             return false;
         }
     };
+    this.checkMoTa = function(input, spanID, message) {
+        var pattern = new RegExp(
+            '^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ' +
+            'ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ' +
+            'ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]{1,10}$'
+        );
+        if (pattern.test(input.trim())) {
+            console.log("test = " + pattern.test(input.trim()));
+            ReturnNotMess(spanID);
+            return true;
+        } else {
+            ReturnMess(spanID, message);
+            return false;
+        }
 
+    }
 }
