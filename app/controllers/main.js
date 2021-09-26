@@ -169,16 +169,19 @@ function capNhapGV(id) {
     var loaiND = document.getElementById("loaiNguoiDung").value;
     var ngonNgu = document.getElementById("loaiNgonNgu").value;
     var moTa = document.getElementById("MoTa").value;
-    var gv = new GiaoVien(taiKhoan, matKhau, hoTen, email, ngonNgu, loaiND, moTa, hinhAnh);
-    dsGV.capNhap(gv, id)
-        .then(function(response) {
-            console.log(response.data);
-            layDSGV();
-            document.querySelector("#myModal .close").click();
-        })
-        .catch(function(error) {
-            console.log(error);
-        })
+    var isValid = checkValidation(taiKhoan, matKhau, hoTen, email, ngonNgu, loaiND, moTa, hinhAnh);
+    if (isValid) {
+        var gv = new GiaoVien(taiKhoan, matKhau, hoTen, email, ngonNgu, loaiND, moTa, hinhAnh);
+        dsGV.capNhap(gv, id)
+            .then(function(response) {
+                console.log(response.data);
+                layDSGV();
+                document.querySelector("#myModal .close").click();
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+    }
 }
 
 function xoa(id) {
